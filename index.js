@@ -18,7 +18,12 @@ app.listen(8081, () => {
 });
 
 app.get("/", (req, res, next) => {
-  let ip = req.query.HTTP_CF_CONNECTING_IP;
+
+  let ip = req.connection.remoteAddress
+
+  if (ip==undefined)
+    ip = req.query.HTTP_CF_CONNECTING_IP;
+
   if (ip==undefined)
     ip = req.query.HTTP_X_FORWARDED_FOR;
 
