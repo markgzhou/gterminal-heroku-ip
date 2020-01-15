@@ -17,8 +17,7 @@ const PORT = process.env.PORT || 5000
 app.get("/", (req, res, next) => {
   res.send('Hello World!')
 
-
-  let ip = req.connection.remoteAddress
+  // let ip = req.connection.remoteAddress
 
   // if (ip==undefined)
   //   ip = req.query.HTTP_CF_CONNECTING_IP;
@@ -35,6 +34,6 @@ app.get("/", (req, res, next) => {
   // var i;
   // for(i=0; i<results.length; i++){
   // }
-  
+
  })
  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
