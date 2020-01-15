@@ -16,7 +16,19 @@ const PORT = process.env.PORT || 5000
 
 app.get("/", (req, res, next) => {
 
-  var ipAddr = req.headers["x-forwarded-for"];
+  ipAddr = req.query.ip;
+
+  if (!ipAddr)
+    ipAddr = req.query.HTTP_CF_CONNECTING_IP;
+
+  if (!ipAddr)
+    ipAddr = req.query.HTTP_X_FORWARDED_FOR;
+
+  if (!ipAddr)
+    ipAddr = req.query.REMOTE_ADDR;
+
+  if (!ipAddr)
+    ipAddr = req.headers["x-forwarded-for"];
 
   if (ipAddr){
     var list = ipAddr.split(",");
@@ -24,15 +36,6 @@ app.get("/", (req, res, next) => {
   } else {
     ipAddr = req.connection.remoteAddress;
   }
-
-  if (!ipAddr)
-    ip = req.query.HTTP_CF_CONNECTING_IP;
-
-  if (!ipAddr)
-    ip = req.query.HTTP_X_FORWARDED_FOR;
-
-  if (!ipAddr)
-    ip = req.query.REMOTE_ADDR;
 
   res.json(ipAddr);
   // res.json(ipInt(ip).toInt());
