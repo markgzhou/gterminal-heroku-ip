@@ -5,12 +5,12 @@ const csv = require('csv-parser')
 const fs = require('fs')
 const results = [];
 
-fs.createReadStream('resources/lite-db-202001.csv')
-  .pipe(csv())
-  .on('data', (data) => results.push(data))
-  .on('end', () => {
-  console.log("CSV loading completed!!!")
-});
+// fs.createReadStream('resources/lite-db-202001.csv')
+//   .pipe(csv())
+//   .on('data', (data) => results.push(data))
+//   .on('end', () => {
+//   console.log("CSV loading completed!!!")
+// });
 
 
 app.listen(8081, () => {
