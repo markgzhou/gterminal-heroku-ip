@@ -34,11 +34,10 @@ app.get("/", (req, res, next) => {
   if (!ipAddr)
     ip = req.query.REMOTE_ADDR;
 
-  res.json(ipInt(ip).toInt());
+  res.json(ip);
+  // res.json(ipInt(ip).toInt());
   console.log(ip);
-  var i;
-  for(i=0; i<results.length; i++){
-  }
+
 
  })
  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
