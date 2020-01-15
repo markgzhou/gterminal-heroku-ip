@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 5000
 var ip_location_data = [];
 var is_data_loaded = false;
 
-if(ip_location_data.length<1){
+if (ip_location_data.length < 1) {
   fs.createReadStream('resources/lite-db-202001.csv.gz')
     .pipe(zlib.createGunzip())
     .pipe(csv())
@@ -17,7 +17,7 @@ if(ip_location_data.length<1){
     .on('end', () => {
       console.log("CSV loading completed!");
       is_data_loaded = true;
-  })
+    })
 }
 
 app.get("/", (req, res, next) => {
@@ -34,9 +34,9 @@ app.get("/", (req, res, next) => {
 
   if (!ipAddr)
     ipAddr = req.headers["x-forwarded-for"];
-  if (ipAddr){
+  if (ipAddr) {
     var list = ipAddr.split(",");
-    ipAddr = list[list.length-1];
+    ipAddr = list[list.length - 1];
   } else {
     ipAddr = req.connection.remoteAddress;
   }
@@ -49,17 +49,17 @@ app.get("/", (req, res, next) => {
   result["city_name"] = "Unknown";
 
 
-  function findLocation(result, ip_addr_int){
-    if(!is_data_loaded){
+  function findLocation(result, ip_addr_int) {
+    if (!is_data_loaded) {
       var status = {};
       status["ip"] = result["ip"];
       status["description"] = "System booting.Please wait for 5 seconds and try...";
       return status;
     }
-    else{
+    else {
       var i;
-      for(i=0; i< ip_location_data.length; i++){
-        if(ip_location_data[i]["start_ip"]<= ip_addr_int && ip_location_data[i]["end_ip"]>= ip_addr_int){
+      for (i = 0; i < ip_location_data.length; i++) {
+        if (ip_location_data[i]["start_ip"] <= ip_addr_int && ip_location_data[i]["end_ip"] >= ip_addr_int) {
           result["area_code"] = ip_location_data[i]["country_code"];
           result["area_name"] = ip_location_data[i]["country_name"];
           result["state_name"] = ip_location_data[i]["state_name"];
@@ -72,16 +72,16 @@ app.get("/", (req, res, next) => {
   }
 
   let ip_addr_int
-  try{
-   ip_addr_int = ipInt(ipAddr).toInt();
+  try {
+    ip_addr_int = ipInt(ipAddr).toInt();
   }
-  catch (e){
+  catch (e) {
     result["description"] = "The given IP address is invalid.";
     console.log(e);
   }
   res.json(findLocation(result, ip_addr_int));
 
- })
- .listen(PORT, () => {
-  console.log(`Listening on ${ PORT }`);
-});
+})
+  .listen(PORT, () => {
+    console.log(`Listening on ${PORT}`);
+  });
