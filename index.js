@@ -9,7 +9,6 @@ const PORT = process.env.PORT || 5000
 var ip_location_data = [];
 var is_data_loaded = false;
 
-
 if(ip_location_data.length<1){
   fs.createReadStream('resources/lite-db-202001.csv.gz')
     .pipe(zlib.createGunzip())
@@ -20,10 +19,6 @@ if(ip_location_data.length<1){
       is_data_loaded = true;
   })
 }
-
-    
-
-
 
 app.get("/", (req, res, next) => {
 
