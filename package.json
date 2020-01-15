@@ -1,13 +1,13 @@
 {
   "name": "gterminal-ip-geolocation",
-  "version": "0.3.0",
+  "version": "0.1.0",
   "description": "A sample Node.js app using Express 4",
   "engines": {
     "node": "12.x"
   },
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js --max_old_space_size=2048"
   },
   "dependencies": {
     "csv-parser": "^2.3.2",
