@@ -34,9 +34,9 @@ app.get("/", (req, res, next) => {
   if (!ipAddr)
     ip = req.query.REMOTE_ADDR;
 
-  res.json(ip);
+  res.json(ipAddr);
   // res.json(ipInt(ip).toInt());
-  console.log(ip);
+  console.log(ipAddr);
 
 
  })
