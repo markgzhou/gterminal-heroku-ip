@@ -1,0 +1,6 @@
+{
+  "name": "Start on Heroku: Node.js",
+  "description": "A Node.js app to get geo-location from IP address",
+  "repository": "https://github.com/markgzhou/gterminal-heroku-ip",
+  "keywords": ["node", "heroku"]
+}
