@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Wed Jan 15 12:44:19 CST 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-016f-a784-3dd2-000016b9f028 
+on database directory /Users/guanlongzhou/Git/Heroku/gterminal-ip-geolocation/metastore_db with class loader org.apache.spark.sql.hive.client.IsolatedClientLoader$$anon$1@1d24c7c1 
+Loaded from file:/usr/local/opt/spark-2.4.3/jars/derby-10.12.1.1.jar
+java.vendor=Azul Systems, Inc.
+java.runtime.version=1.8.0_232-b18
+user.dir=/Users/guanlongzhou/Git/Heroku/gterminal-ip-geolocation
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.14.6
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
